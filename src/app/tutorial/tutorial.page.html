@@ -1,0 +1,35 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Tutorial</ion-title>
+  </ion-toolbar>
+  <ion-button [routerLink]="['/home']">skip</ion-button>
+</ion-header> [options]="slideOpts"-->
+<ion-list-header>
+
+  <ion-label>Tutorial</ion-label>
+  <ion-button [routerLink]="['/home']">skip</ion-button>
+</ion-list-header>
+
+
+<ion-content>
+  <ion-slides #slides pager="true" class ="slides">
+    <ion-slide class ="slide">
+      <h1>Slide 1</h1>
+      <div><ion-button  (click)="slidePrev()">previous</ion-button><ion-button (click)="slideNext()">next</ion-button></div>
+      
+    </ion-slide>
+    <ion-slide class ="slide">
+      <h1>Slide 2</h1>
+      <div><ion-button  (click)="slidePrev()">previous</ion-button><ion-button (click)="slideNext()">next</ion-button></div>
+      
+    </ion-slide>
+    <ion-slide class ="slide">
+      <h1>Slide 3</h1>
+      <div><ion-button  (click)="slidePrev()">previous</ion-button><ion-button [routerLink]="['/home']">continue</ion-button></div>
+      
+    </ion-slide>
+  </ion-slides>
+  <ion-footer>
+    <!-- <ion-button  (click)="slidePrev()">previous</ion-button><ion-button (click)="slideNext()">next</ion-button> -->
+  </ion-footer>
+</ion-content>

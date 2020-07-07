@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +13,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent {
   constructor(
+    private storage:Storage,
+    private router:Router,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
@@ -23,5 +27,20 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    this.storage.get("tutorialShown").then( result => {
+      console.log(result);
+    });
+    this.storage.get("tutorialShown").then( result => {
+      console.log(result, "start");
+      if (!result) {
+          console.log(result);
+          this.storage.set("tutorialShown", true);
+          this.router.navigate(['/tutorial']);
+         // this.navCtrl.setRoot(TutorialPage);
+      } else {
+        this.router.navigate(['/home']);
+         console.log(result,"else");
+      }
+  })
   }
 }

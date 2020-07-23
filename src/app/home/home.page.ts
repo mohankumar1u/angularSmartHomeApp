@@ -56,8 +56,12 @@ export class HomePage {
    // this.barcodeScanner.scan().then(barcodeData => {
     //  this.scannedCode = barcodeData.text;
       this.scannedCode =`'/livingroom/light'
-      '/livingroom/fun'`;
+      '/livingroom/light2'
+      '/livingroom/fun' 
+      '/livingroom/fun2' 
+      '/bedroom/fun'`;
       var data = this.scannedCode.split("\n");
+      console.log(data)
       let i=0;
       data.forEach(element => {
         element = element.split("/");
@@ -101,14 +105,14 @@ export class HomePage {
   //  console.log(message.payload.toString());
  
     // });
-    this.mqtt.onConnect.subscribe((e) => {
-      console.log('hello');
-      alert('onConnect');
-    });
+    // this.mqtt.onConnect.subscribe((e) => {
+    //   console.log('hello');
+    //   alert('onConnect');
+    // });
 
-    this.mqtt.onError.subscribe((e) => {
-      alert(e);
-    });
+    // this.mqtt.onError.subscribe((e) => {
+    //   alert(e);
+    // });
   //   this.mqtt.onClose.subscribe(() => {
   //     console.log('onClose');
   //  });

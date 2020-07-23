@@ -1,34 +1,24 @@
-<ion-header [translucent]="true">
-  <!-- <ion-toolbar>
+<!-- <ion-header [translucent]="true">
+   <ion-toolbar>
     <ion-title>
       Blank
     </ion-title>
-  </ion-toolbar> -->
+  </ion-toolbar> 
   <h1>rooms</h1>
-</ion-header>
+</ion-header> -->
+<div id="container">
 
-<ion-content [fullscreen]="true">
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  -->
-  
-
-  <div id="container">
-    <ion-card *ngFor="let room of rooms let i = index">
+  <div >
+    <ion-card *ngFor="let room of rooms let i = index" class="cards"  (click)="openPage(i)">
       <ion-card-header text-center>
-        {{room[0]}}
+        <p>{{room[0]}}</p>
       </ion-card-header>
       <ion-card-content text-center>
         
-        <button ion-button small outline (click)="openPage(i)">open</button> 
+        
       </ion-card-content>
     </ion-card>
-    <button (click)="sendMessage()">Send Message</button>
-  <button (click)="publishMessage()">Publish Message</button>
-
   </div>
    
-</ion-content>
+<!-- </ion-content> -->
+</div>

@@ -6,11 +6,16 @@
     <ion-title>{{room[0]}}</ion-title>
   </ion-toolbar>
 </ion-header>
+<div id="container">
 
-<ion-content>
-  <ion-item *ngFor="let device of room[1]">
-    <ion-label>{{device}}</ion-label>
-    <ion-toggle ></ion-toggle>
-  </ion-item>
+  <!-- <ion-card *ngFor="let device of room[1]"> -->
+    <!-- <ion-card-header>{{device}}</ion-card-header> -->
+    <ion-grid class ="room-device">
+      <ion-row class="row">
+        <div [ngStyle]="{'color':'#e6908f'}" *ngFor="let device of room[1]" class="device">{{device}} </div>
+      </ion-row>
+    </ion-grid>
+    <!-- <ion-toggle ></ion-toggle> -->
+  <!-- </ion-card> -->
 
-</ion-content>
+</div>

@@ -65,12 +65,21 @@ export class HomePage {
       let i=0;
       data.forEach(element => {
         element = element.split("/");
+        element[2]=element[2].split(" ").join("")
+        element[2]=element[2].slice(0, -1);
         if(this.rooms[element[1]] != undefined){
-          this.rooms[element[1]].push(element[2])
-         // console.log(this.rooms[element[1]],"yes");
+          let item ={device:element[2],
+          payload:false,
+          color:"rgb(250, 94, 242)"
+        }
+          this.rooms[element[1]].push(item)
+          console.log(this.rooms[element[1]],element[2],"yes");
         }else{
-          this.rooms[element[1]]=[element[2]];
-         // console.log(this.rooms[element[1]], "no");
+          
+          let item ={device:element[2],payload:false,
+            color:"rgb(250, 94, 242)"}
+          this.rooms[element[1]]=[item];
+          console.log(this.rooms[element[1]], "no");
         }
     });
     this.rooms =Object.entries(this.rooms);

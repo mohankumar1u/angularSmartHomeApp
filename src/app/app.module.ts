@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { Observable } from 'rxjs/Observable';
+import { HTTP } from '@ionic-native/http/ngx';
 import {
   IMqttMessage,
   MqttModule,
@@ -55,6 +56,7 @@ export function mqttServiceFactory() {
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     BarcodeScanner,
+    HTTP
     //MQTTService
   ],
 

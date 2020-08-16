@@ -12,7 +12,7 @@
     <!-- <ion-card-header>{{device}}</ion-card-header> -->
     <ion-grid class ="room-device">
       <ion-row class="row">
-        <div [ngStyle]="{'color':'#e6908f'}" *ngFor="let device of room[1]" class="device">{{device}} </div>
+        <div [ngStyle]="{'background-color': ''}" (click)="alter(device,room)" *ngFor="let device of room[1]" class="device">{{device.device}}<div [ngClass]="device.payload ? 'on' : 'off'"></div> </div>
       </ion-row>
     </ion-grid>
     <!-- <ion-toggle ></ion-toggle> -->

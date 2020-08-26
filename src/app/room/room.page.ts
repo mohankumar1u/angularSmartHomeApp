@@ -17,13 +17,24 @@ export class RoomPage implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
    this.room =this.roomService.getRoomDetails(id)
   }
+  roomChange(e ,i){
+    this.room[2].forEach((element,index) => {
+      if(e.value===element){
+        this.room =this.roomService.getRoomDetails(index);
+      }
+    });
+  }
   alter(device,room){
-    console.log(device.payload,room);
-    if(device.payload== true ){
-      device.payload=false
+    if(device.payload== 0 ){
+      this.roomService.deviceOnOff(device.topic,1).subscribe(data=>{
+      })
+      device.payload=1
     }
     else{
-      device.payload=true
+      console.log(device.topic,0)
+      this.roomService.deviceOnOff(device.topic,0).subscribe(data=>{
+      })
+      device.payload=0
     }
     
   }

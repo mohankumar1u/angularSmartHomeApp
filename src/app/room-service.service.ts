@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomServiceService {
   [x: string]: any;
-  rooms ={};
-  room=[]
+  rooms =[];
+  room=[];
+  allRooms=[];
 
-  constructor(private http: HTTP) { }
+  constructor(private http: HTTP,private https: HttpClient) { }
   createRooms(data){
    this.rooms=data;
    console.log(this.rooms[0]);
@@ -33,9 +36,21 @@ export class RoomServiceService {
   }
   getRoomDetails(data){
     this.room=this.rooms[data];
-    console.log(this.room["livingRoom"]);
+    for (let index = 0; index < this.rooms.length; index++) {
+       this.allRooms[index] = this.rooms[index][0];
+    }
+  this.room[2]=this.allRooms
     return this.room
-    
+  }
+  getAllData(): Observable<any>{
+    return this.https.get(`http://127.0.0.1:1880/get/alldevices`);
+  }
+  deviceOnOff(topic, payload): Observable<any>{
+    var data= {
+      "topic":topic,
+      "payload":payload
+      }
+    return this.https.post(`http://127.0.0.1:1880/deviceOnOff`,data);
   }
   getTest(){
     this.http.post('tachyon_mqtt.com',{},{headers: { 'Content-Type': 'application/json' }})

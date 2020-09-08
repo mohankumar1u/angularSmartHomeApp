@@ -49,12 +49,20 @@ export class HomePage {
       });
     });
     // this.barcodeScanner.scan().then(barcodeData => {
-    //  this.scannedCode = barcodeData.text;
+    //   this.scannedCode = barcodeData.text;
+   
     this.scannedCode = `'/livingroom/light'
       '/livingroom/light2'
-      '/livingroom/fun' 
-      '/livingroom/fun2' 
-      '/bedroom/fun'`;
+      '/livingroom/fan1' 
+      '/livingroom/fan2' 
+      '/livingroom/RGB'
+      '/livingroom/TV'
+      '/livingroom/Power1'
+      '/livingroom/AC'
+      '/livingroom/chandelier'
+      '/bedroom/AC'
+      '/bedroom/RGB'
+      '/bedroom/fan1'`;
     var data = this.scannedCode.split("\n");
     let i = 0;
     data.forEach(element => {
@@ -69,7 +77,8 @@ export class HomePage {
           device: element[2],
           payload: false,
           topic: topic,
-          color: "rgb(250, 94, 242)"
+          color: "rgb(250, 94, 242)",
+          display:"block"
         }
         this.rooms[element[1]].push(item)
       } else {
@@ -77,15 +86,18 @@ export class HomePage {
         let item = {
           device: element[2], payload: false,
           topic: topic,
-          color: "rgb(250, 94, 242)"
+          color: "rgb(250, 94, 242)",
+          display:"block"
         }
         this.rooms[element[1]] = [item];
       }
     });
     this.rooms = Object.entries(this.rooms);
     this.roomService.createRooms(this.rooms);
+  //});
 
   }
+
   openPage(i) {
     console.log(i);
     this.router.navigate([`/room/${i}`]);
